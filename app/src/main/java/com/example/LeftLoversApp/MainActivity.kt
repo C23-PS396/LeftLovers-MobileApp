@@ -13,6 +13,10 @@ import androidx.activity.viewModels
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.LeftLoversApp.databinding.ActivityMainBinding
@@ -21,6 +25,7 @@ import com.example.LeftLoversApp.view.login.LoginActivity
 import com.example.LeftLoversApp.view.Result
 import com.example.LeftLoversApp.view.adapter.StoryAdapter
 import com.example.LeftLoversApp.view.upload.UploadActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")
@@ -42,7 +47,9 @@ class MainActivity : AppCompatActivity() {
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvStory.addItemDecoration(itemDecoration)
 
+
         setupView()
+        setupBottomNavBar()
         setupLogout()
     }
 
@@ -74,7 +81,24 @@ class MainActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-        supportActionBar?.hide()
+//        supportActionBar?.hide()
+    }
+
+    private fun setupBottomNavBar() {
+        //        ----------------------------------
+        val navView: BottomNavigationView = binding.navView
+
+        val navController = findNavController(R.id.nav_host_fragment)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_keranjang , R.id.navigation_profile
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+//        ----------------------------------
     }
 
     private fun setupLogout() {
