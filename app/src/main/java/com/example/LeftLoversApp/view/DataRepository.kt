@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.LeftLoversApp.api.ApiService
 import com.example.LeftLoversApp.model.LoginResponse
 import com.example.LeftLoversApp.model.RegisterResponse
@@ -17,6 +18,9 @@ class DataRepository private constructor(
 ) {
     private val resultRegister = MediatorLiveData<Result<RegisterResponse>>()
     private val resultLogin = MediatorLiveData<Result<LoginResponse>>()
+
+    private val _loginResponse = MutableLiveData<LoginResponse?>()
+    val loginResponse: LiveData<LoginResponse?> = _loginResponse
 
     fun register(email: String, password: String, username: String): LiveData<Result<RegisterResponse>> {
         resultRegister.value = Result.Loading
@@ -56,6 +60,8 @@ class DataRepository private constructor(
                     val responseBody = response.body()
                     if (responseBody != null) {
                         resultLogin.value = Result.Success(responseBody)
+                        Log.e(TAG, "Success - ${response.body()}")
+                        _loginResponse.value = responseBody
                     } else {
                         resultLogin.value = Result.Error(LOGIN_ERROR_MESSAGE)
                         Log.e(TAG, "Failed: Login Information is null")
@@ -76,7 +82,7 @@ class DataRepository private constructor(
     }
 
     companion object {
-        private val TAG = DataRepository::class.java.simpleName
+        val TAG = DataRepository::class.java.simpleName
         private const val LOGIN_ERROR_MESSAGE = "Login failed, please try again."
         private const val REGISTER_ERROR_MESSAGE = "Register failed, please try again."
         @Volatile
