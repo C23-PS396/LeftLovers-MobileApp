@@ -12,7 +12,45 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
 
     private val token = stringPreferencesKey("token")
     private val isLogin = booleanPreferencesKey("isLogin")
+    private val username = stringPreferencesKey("username")
+    private val id = stringPreferencesKey("id")
+    private val transactionId = stringPreferencesKey("transactionId")
 
+    fun getUsername(): Flow<String> {
+        return dataStore.data.map {
+            it[username] ?: "null"
+        }
+    }
+    suspend fun saveUsername(username: String) {
+        dataStore.edit {
+            it[this.username] = username
+        }
+    }
+    fun getTransactionId(): Flow<String> {
+        return dataStore.data.map {
+            it[transactionId] ?: "null"
+        }
+    }
+    suspend fun saveTransactionId(transactionId: String) {
+        dataStore.edit {
+            it[this.transactionId] = transactionId
+        }
+    }
+    suspend fun resetTransactionId() {
+        dataStore.edit {
+            it[transactionId] = "null"
+        }
+    }
+    fun getId(): Flow<String> {
+        return dataStore.data.map {
+            it[id] ?: "null"
+        }
+    }
+    suspend fun saveId(username: String) {
+        dataStore.edit {
+            it[this.id] = username
+        }
+    }
     fun getToken(): Flow<String> {
         return dataStore.data.map {
             it[token] ?: "null"

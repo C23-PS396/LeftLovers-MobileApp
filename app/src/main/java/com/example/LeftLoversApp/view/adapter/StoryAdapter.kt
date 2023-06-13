@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.LeftLoversApp.R
 import com.example.LeftLoversApp.local.Story
-import com.example.LeftLoversApp.view.detail.DetailActivity
+//import com.example.LeftLoversApp.view.detail.DetailActivity
 
 
 class StoryAdapter(private val listStory: List<Story>) : RecyclerView.Adapter<StoryAdapter.ViewHolder>() {
@@ -23,13 +23,13 @@ class StoryAdapter(private val listStory: List<Story>) : RecyclerView.Adapter<St
         viewHolder.tvTitle.text = nama
         viewHolder.tvDesc.text = desc
 
-        viewHolder.itemView.setOnClickListener() {
-            val intentUserDetail = Intent(viewHolder.itemView.context, DetailActivity::class.java)
-            intentUserDetail.putExtra("name", listStory[viewHolder.adapterPosition].name)
-            intentUserDetail.putExtra("desc", listStory[viewHolder.adapterPosition].description)
-            intentUserDetail.putExtra("img", listStory[viewHolder.adapterPosition].photoUrl)
-            viewHolder.itemView.context.startActivity(intentUserDetail)
-        }
+//        viewHolder.itemView.setOnClickListener() {
+//            val intentUserDetail = Intent(viewHolder.itemView.context, DetailActivity::class.java)
+//            intentUserDetail.putExtra("name", listStory[viewHolder.adapterPosition].name)
+//            intentUserDetail.putExtra("desc", listStory[viewHolder.adapterPosition].description)
+//            intentUserDetail.putExtra("img", listStory[viewHolder.adapterPosition].photoUrl)
+//            viewHolder.itemView.context.startActivity(intentUserDetail)
+//        }
 
     }
     override fun getItemCount() = listStory.size
