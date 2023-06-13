@@ -1,9 +1,6 @@
 package com.example.LeftLoversApp.api
 
-import com.example.LeftLoversApp.model.AddStoryResponse
-import com.example.LeftLoversApp.model.LoginResponse
-import com.example.LeftLoversApp.model.RegisterResponse
-import com.example.LeftLoversApp.model.StoryResponse
+import com.example.LeftLoversApp.model.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -25,6 +22,10 @@ interface ApiService {
         @Field("credential") credential: String,
         @Field("password") password: String
     ): Call<LoginResponse>
+
+    @GET("/api/v1/gamification")
+    fun getGamification(
+    ): Call<List<GamificationResponseItem>>
 
     @GET("stories")
     fun getStories(

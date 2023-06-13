@@ -2,7 +2,7 @@
     <string name="app_name">Left Lovers</string>
     <string name="signup">Daftar</string>
     <string name="login">Login</string>
-    <string name="signin">Sign in</string>
+    <string name="signin">Sign Up</string>
     <string name="message_welcome_page">Mau belajar Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya? Di Dicoding aja!</string>
     <string name="title_welcome_page">Selamat datang di Dicoding!</string>
     <string name="title_signup_page">Complete your personal data</string>
@@ -29,6 +29,16 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="NamaMakanan">Nama Makanan</string>
+    <string name="expiredDate">Expired Date</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="NamaToko">Nama Toko</string>
+    <string name="emailuser">Email User</string>
+    <string name="Leaderboard">Leaderboard</string>
+    <string name="history">History</string>
+    <string name="username">username</string>
+    <string name="point">point</string>
 
 
 </resources>
