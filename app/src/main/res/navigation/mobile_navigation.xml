@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="com.example.LeftLoversApp.view.keranjang.HistoryFragment"
+        android:name="com.example.LeftLoversApp.view.history.HistoryFragment"
         android:label="@string/history"
         tools:layout="@layout/fragment_history" />
 

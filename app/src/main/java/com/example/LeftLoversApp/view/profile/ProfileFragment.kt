@@ -67,11 +67,11 @@ class ProfileFragment : Fragment() {
         val textView2: TextView = binding.tvItemTitle
 //            textView2.text = profileViewModel.getProfile().value?.data?.email
 
-//        profileViewModel.getUserId().observe(viewLifecycleOwner) {
-//            textView2.text = "$it"
-//            println("$it")
-//
-//        }
+        profileViewModel.getUsername().observe(viewLifecycleOwner) {
+            textView2.text = "$it"
+            println("$it")
+
+        }
         setButton()
         return root
 

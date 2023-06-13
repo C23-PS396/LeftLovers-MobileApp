@@ -19,7 +19,7 @@ import retrofit2.Response
 
 class LeaderboardViewModel: ViewModel() {
 
-        private val _leaderboardList = MutableLiveData<GamificationResponse>()
+    private val _leaderboardList = MutableLiveData<GamificationResponse>()
     val leaderboardList: LiveData<GamificationResponse> = _leaderboardList
 
     fun getLeaderboard():LiveData<GamificationResponse> {
@@ -28,24 +28,6 @@ class LeaderboardViewModel: ViewModel() {
         val client = ApiConfig.getApiService().getGamification()
 
         client.enqueue(object : Callback<List<GamificationResponseItem>> {
-//            override fun onResponse(
-//                call: Call<GamificationResponse>,
-//                response: Response<GamificationResponse>
-//            ) {
-//                val responseBody = response.body()
-//                val responseBodyList = ArrayList<Story>()
-////                _isLoadingMain.value = false
-////
-//                if (response.isSuccessful) {
-//
-//                    Log.e(ContentValues.TAG, "isi leaderboard : ${responseBody}")
-//                } else {
-//                    Log.e(ContentValues.TAG, "isi leaderboard gagal : ${responseBody}")
-//                }
-//            }
-//            override fun onFailure(call: Call<GamificationResponse>, t: Throwable) {
-//                Log.e(ContentValues.TAG, "API call failed: ${t.message}")
-//            }
 
             override fun onResponse(
                 call: Call<List<GamificationResponseItem>>,
@@ -61,6 +43,7 @@ class LeaderboardViewModel: ViewModel() {
                         }
                         _leaderboardList.value = GamificationResponse(responseBodyList)
                     }
+                    Log.e(ContentValues.TAG, "isi leaderboard  : ${_leaderboardList.value}")
                 } else {
                     Log.e(ContentValues.TAG, "isi leaderboard gagal : ${responseBody}")
                 }            }

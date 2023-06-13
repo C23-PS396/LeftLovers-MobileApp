@@ -43,6 +43,8 @@
 
     <string name="purchase">Purchase</string>
     <string name="bayar">Sudah Bayar?</string>
+    <string name="harga">harga</string>
+    <string name="status">status</string>
 
 
 </resources>

@@ -38,6 +38,14 @@ interface ApiService {
     @GET("/api/v1/gamification")
     fun getGamification(
     ): Call<List<GamificationResponseItem>>
+
+    @GET("/api/v1/transaction")
+    fun getHistory(
+        @Header("Authorization") token: String,
+        @Query("merchantId") merchantId: String?,
+        @Query("customerId") customerId: String
+    ): Call<HistoryResponse>
+
     @GET("/api/v1/food")
     fun getFood(
         @Header("Authorization") token: String,
