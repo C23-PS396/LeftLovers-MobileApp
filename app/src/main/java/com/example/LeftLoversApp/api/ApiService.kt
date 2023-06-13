@@ -1,9 +1,23 @@
 package com.example.LeftLoversApp.api
 
+<<<<<<< HEAD
 import com.example.LeftLoversApp.model.*
+=======
+import com.example.LeftLoversApp.localData.FoodsItem
+import com.example.LeftLoversApp.localData.StatusResponses
+import com.example.LeftLoversApp.localData.TransactionResponse
+import com.example.LeftLoversApp.localData.TransactionResponses
+import com.example.LeftLoversApp.model.AddStoryResponse
+import com.example.LeftLoversApp.model.FoodResponses
+import com.example.LeftLoversApp.model.LoginResponse
+import com.example.LeftLoversApp.model.RegisterResponse
+import com.example.LeftLoversApp.model.StoryResponse
+import com.google.gson.annotations.SerializedName
+>>>>>>> 0fd771ca8df55ad34ffc14c006b91c44077c3cfb
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
@@ -23,9 +37,74 @@ interface ApiService {
         @Field("password") password: String
     ): Call<LoginResponse>
 
+<<<<<<< HEAD
     @GET("/api/v1/gamification")
     fun getGamification(
     ): Call<List<GamificationResponseItem>>
+=======
+    @GET("/api/v1/food")
+    fun getFood(
+        @Header("Authorization") token: String,
+        @Query("merchantId") merchantId: String?,
+        @Query("category") category: String,
+        @Query("isActive") isActive: Boolean
+    ): Call<FoodResponses>
+
+    @PATCH("/api/v1/transaction/update")
+    fun updateStatus(
+        @Header("Authorization") token: String,
+        @Body requestBody: RequestBody
+    ): Call<StatusResponses>
+
+    @FormUrlEncoded
+    @PATCH("/api/v1/transaction/update")
+    fun updateStatusTransaction(
+        @Header("Authorization") token: String,
+        @Field("status") status: Int,
+        @Field("transactionId") transactionId: String?
+    ): Call<StatusResponses>
+
+//    @FormUrlEncoded
+//    @POST("/api/v1/transaction")
+//    fun postTransaction(
+//        @Header("Authorization") token: String,
+//        @Query("merchantId") merchantId: String,
+//        @Query("customerId") customerId: String,
+//        @Query("foods")
+//    )
+//    @FormUrlEncoded
+//    @POST("/api/v1/transaction")
+//    fun postTransaction(
+//        @Header("Authorization") token: String,
+//        @Field("merchantId") merchantId: String?,
+//        @Field("customerId") customerId: String,
+//        @Field("foods") foods: List<FoodsItem>
+//    ): Call<TransactionResponse>
+    @Headers("Content-Type: application/json")
+    @POST("/api/v1/transaction")
+    fun postTransaction(
+        @Header("Authorization") token: String,
+        @Body requestBody: RequestBody
+    ): Call<TransactionResponses>
+
+//    @POST("/api/v1/transaction")
+//    suspend fun postTransaction(
+//        @Header("Authorization") token: String,
+//        @Body request: TransactionRequest
+//    ): Response<TransactionResponse>
+//
+//    data class TransactionRequest(
+//        @SerializedName("merchantId") val merchantId: String,
+//        @SerializedName("customerId") val customerId: String,
+//        @SerializedName("foods") val foods: List<FoodItem>
+//    )
+//
+//    data class FoodItem(
+//        @SerializedName("foodId") val foodId: String,
+//        @SerializedName("quantity") val quantity: Int
+//    )
+
+>>>>>>> 0fd771ca8df55ad34ffc14c006b91c44077c3cfb
 
     @GET("stories")
     fun getStories(

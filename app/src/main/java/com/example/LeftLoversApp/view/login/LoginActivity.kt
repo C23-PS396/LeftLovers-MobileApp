@@ -70,7 +70,6 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun setupAction() {
         binding.loginButton.setOnClickListener {
-            println("keluar 1")
             if (binding.emailEditText.text.isNullOrEmpty() && binding.passwordEditText.text.isNullOrEmpty()) {
 
                 if (binding.emailEditText.text.isNullOrEmpty()) {
@@ -81,30 +80,31 @@ class LoginActivity : AppCompatActivity() {
                 }
 
             } else {
-                println("keluar 2")
                 val credential = binding.emailEditText.text.toString()
                 val password = binding.passwordEditText.text.toString()
                 val result = loginViewModel.login(credential, password)
                 result.observe(this) {
                     when (it) {
                         is Result.Loading -> {
-                            println("keluar 3")
                             binding.progressBar.visibility = View.VISIBLE
                         }
                         is Result.Error -> {
-                            println("keluar 4")
                             binding.progressBar.visibility = View.INVISIBLE
                             val error = it.error
                             Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
                         }
                         is Result.Success -> {
-                            println("keluar 5")
                             binding.progressBar.visibility = View.INVISIBLE
                             val temp = it.data
                             loginViewModel.saveToken(temp.token)
+<<<<<<< HEAD
 //                            loginViewModel.saveUserId(temp.data.id)
                             println(temp.data.id)
                             println("keluar 6")
+=======
+                            loginViewModel.saveUsername(temp.data.username)
+                            loginViewModel.saveId(temp.data.id)
+>>>>>>> 0fd771ca8df55ad34ffc14c006b91c44077c3cfb
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
                             finish()
