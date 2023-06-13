@@ -12,14 +12,11 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
 
     private val token = stringPreferencesKey("token")
     private val isLogin = booleanPreferencesKey("isLogin")
-<<<<<<< HEAD
 //    private val userId = stringPreferencesKey("id")
     private val listData = listOf(stringPreferencesKey(""))
-=======
     private val username = stringPreferencesKey("username")
     private val id = stringPreferencesKey("id")
     private val transactionId = stringPreferencesKey("transactionId")
->>>>>>> 0fd771ca8df55ad34ffc14c006b91c44077c3cfb
 
     fun getUsername(): Flow<String> {
         return dataStore.data.map {
