@@ -13,7 +13,7 @@ class LoginViewModel(private val dataRepository: DataRepository, private val use
             userPreference.saveToken(token)
         }
     }
-<<<<<<< HEAD
+
 
 //    fun saveUserId(id: String) {
 //        viewModelScope.launch(Dispatchers.IO) {
@@ -21,7 +21,7 @@ class LoginViewModel(private val dataRepository: DataRepository, private val use
 //        }
 //    }
 
-=======
+
     fun saveUsername(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
             userPreference.saveUsername(username)
@@ -32,7 +32,7 @@ class LoginViewModel(private val dataRepository: DataRepository, private val use
             userPreference.saveId(id)
         }
     }
->>>>>>> 0fd771ca8df55ad34ffc14c006b91c44077c3cfb
+
     fun checkIsLogin(): LiveData<Boolean> {
         return userPreference.isLogin().asLiveData()
     }

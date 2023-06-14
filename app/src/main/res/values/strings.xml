@@ -29,7 +29,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-<<<<<<< HEAD
+
     <string name="NamaMakanan">Nama Makanan</string>
     <string name="expiredDate">Expired Date</string>
     <string name="minus">-</string>
@@ -40,11 +40,11 @@
     <string name="history">History</string>
     <string name="username">username</string>
     <string name="point">point</string>
-=======
+
     <string name="purchase">Purchase</string>
     <string name="bayar">Sudah Bayar?</string>
-
->>>>>>> 0fd771ca8df55ad34ffc14c006b91c44077c3cfb
+    <string name="harga">harga</string>
+    <string name="status">status</string>
 
 
 </resources>

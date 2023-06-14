@@ -15,13 +15,10 @@ class ProfileViewModel(private val dataRepository: DataRepository, private val u
     }
     val text: LiveData<String> = _text
 
-    fun getProfile(): LiveData<LoginResponse?> {
-        return dataRepository.loginResponse
-    }
 
-//    fun getUserId(): LiveData<String> {
-//        return userPreference.getUserId().asLiveData()
-//    }
+    fun getUsername(): LiveData<String> {
+        return userPreference.getUsername().asLiveData()
+    }
 
 
 }
