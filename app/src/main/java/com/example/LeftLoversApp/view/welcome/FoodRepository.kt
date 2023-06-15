@@ -39,7 +39,7 @@ class FoodRepository private constructor(private val apiService: ApiService, pri
     fun getAllFood(token: String):LiveData<Result<List<Food>>> {
         val merchantId = ""
         val category = ""
-        val isActive = false
+        val isActive = true
         getFoodResult.value = Result.Loading
         val client = apiService.getFood(token, merchantId, category, isActive)
         client.enqueue(object : Callback<FoodResponses> {

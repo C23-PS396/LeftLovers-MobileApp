@@ -16,6 +16,9 @@ data class HistoryItem(
 	@field:SerializedName("createdAt")
 	val createdAt: String? = null,
 
+	@field:SerializedName("merchant")
+	val merchant: Merchant? = null,
+
 	@field:SerializedName("merchantId")
 	val merchantId: String? = null,
 
@@ -127,3 +130,28 @@ data class FoodItem(
 	@field:SerializedName("updatedAt")
 	val updatedAt: String? = null
 )
+
+data class Merchant(
+
+	@field:SerializedName("profilePictureUrl")
+	val profilePictureUrl: String? = null,
+
+	@field:SerializedName("createdAt")
+	val createdAt: String? = null,
+
+	@field:SerializedName("sellerId")
+	val sellerId: String? = null,
+
+	@field:SerializedName("locationId")
+	val locationId: String? = null,
+
+	@field:SerializedName("name")
+	val name: String? = null,
+
+	@field:SerializedName("id")
+	val id: String? = null,
+
+	@field:SerializedName("updatedAt")
+	val updatedAt: String? = null
+)
+
