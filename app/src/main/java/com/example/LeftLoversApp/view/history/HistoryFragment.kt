@@ -65,7 +65,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        historyAdapter = HistoryAdapter(emptyList())
+        historyAdapter = HistoryAdapter(requireContext(),emptyList())
         binding.recyclerHistory.adapter = historyAdapter
 
         val layoutManager = LinearLayoutManager(requireContext())

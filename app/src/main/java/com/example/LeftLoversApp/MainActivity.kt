@@ -1,18 +1,22 @@
 package com.example.LeftLoversApp
 
+import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.widget.SearchView
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -47,6 +51,8 @@ class MainActivity : AppCompatActivity() {
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvStory.addItemDecoration(itemDecoration)
 
+        supportActionBar?.setLogo(R.drawable.logo)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
 
         setupView()
         setupBottomNavBar()
@@ -93,13 +99,44 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_history , R.id.navigation_profile, R.id.navigation_leaderboard
+                R.id.navigation_home, R.id.navigation_history , R.id.navigation_profile, R.id.navigation_leaderboard, R.id.navigation_search
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 //        ----------------------------------
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        val inflater = menuInflater
+//        inflater.inflate(R.menu.option_menu, menu)
+//
+//        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+//        val searchView = menu.findItem(R.id.search).actionView as SearchView
+//
+//        val mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+//            MainViewModel::class.java)
+//        val layoutManager = LinearLayoutManager(this)
+////        binding.rvGithub.layoutManager = layoutManager
+////        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+////        binding.rvGithub.addItemDecoration(itemDecoration)
+//
+//        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+////        searchView.queryHint = resources.getString(R.string.search_hint)
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//
+//            override fun onQueryTextSubmit(query: String): Boolean {
+////                mainViewModel.findRestaurant(query)
+//                searchView.clearFocus()
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(query: String): Boolean {
+//                return false
+//            }
+//        })
+//        return true
+//    }
 
     private fun setupLogout() {
 //        binding.logoutButton.setOnClickListener {

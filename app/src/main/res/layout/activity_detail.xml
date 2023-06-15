@@ -21,7 +21,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/guideline" />
+        app:layout_constraintBottom_toTopOf="@+id/rv_story" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_story"
@@ -30,7 +30,8 @@
         app:layout_constraintTop_toBottomOf="@+id/tvName"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_merch"/>
 
     <Button
         android:id="@+id/purchase_button"
@@ -60,6 +61,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.82" />
+        app:layout_constraintGuide_percent="0.92" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

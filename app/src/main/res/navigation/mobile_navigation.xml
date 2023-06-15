@@ -8,24 +8,25 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.LeftLoversApp.view.home.HomeFragment"
-        android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.example.LeftLoversApp.view.history.HistoryFragment"
-        android:label="@string/history"
         tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.LeftLoversApp.view.profile.ProfileFragment"
-        android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_leaderboard"
         android:name="com.example.LeftLoversApp.view.leaderboard.LeaderboardFragment"
-        android:label="@string/Leaderboard"
         tools:layout="@layout/fragment_leaderboard" />
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.example.LeftLoversApp.view.search.SearchFragment"
+        tools:layout="@layout/fragment_search" />
 </navigation>
