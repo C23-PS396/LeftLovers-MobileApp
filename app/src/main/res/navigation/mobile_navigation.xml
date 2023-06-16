@@ -12,20 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_history"
-        android:name="com.example.LeftLoversApp.view.keranjang.HistoryFragment"
-        android:label="@string/history"
-        tools:layout="@layout/fragment_history" />
+        android:id="@+id/navigation_keranjang"
+        android:name="com.example.LeftLoversApp.view.keranjang.KeranjangFragment"
+        android:label="@string/keranjang"
+        tools:layout="@layout/fragment_keranjang" />
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.LeftLoversApp.view.profile.ProfileFragment"
-        android:label="@string/profile"
+        android:label="@string/title_notifications"
         tools:layout="@layout/fragment_profile" />
-
-    <fragment
-        android:id="@+id/navigation_leaderboard"
-        android:name="com.example.LeftLoversApp.view.leaderboard.LeaderboardFragment"
-        android:label="@string/Leaderboard"
-        tools:layout="@layout/fragment_leaderboard" />
 </navigation>

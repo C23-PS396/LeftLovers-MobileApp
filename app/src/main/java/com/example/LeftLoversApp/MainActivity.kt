@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_history , R.id.navigation_profile, R.id.navigation_leaderboard
+                R.id.navigation_home, R.id.navigation_keranjang , R.id.navigation_profile
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -102,13 +102,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupLogout() {
-//        binding.logoutButton.setOnClickListener {
-//            mainViewModel.logout()
-//        }
-//        binding.postStoryButton.setOnClickListener {
-//            val intent= Intent(this, UploadActivity::class.java)
-//            startActivity(intent)
-//        }
+        binding.logoutButton.setOnClickListener {
+            mainViewModel.logout()
+        }
+        binding.postStoryButton.setOnClickListener {
+            val intent= Intent(this, UploadActivity::class.java)
+            startActivity(intent)
+        }
     }
 //    private fun setupGetAction(token: String) {
 //        mainViewModel.getStories(token).observe(this) {
