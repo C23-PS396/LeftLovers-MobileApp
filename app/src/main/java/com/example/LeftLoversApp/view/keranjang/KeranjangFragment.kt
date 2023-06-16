@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.example.LeftLoversApp.databinding.FragmentHistoryBinding
+import com.example.LeftLoversApp.R
+import com.example.LeftLoversApp.databinding.FragmentHomeBinding
+import com.example.LeftLoversApp.databinding.FragmentKeranjangBinding
+import com.example.LeftLoversApp.view.home.HomeViewModel
 
-class HistoryFragment : Fragment() {
+class KeranjangFragment : Fragment() {
 
-    private var _binding: FragmentHistoryBinding? = null
+    private var _binding: FragmentKeranjangBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,9 +26,9 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val homeViewModel =
-            ViewModelProvider(this).get(HistoryViewModel::class.java)
+            ViewModelProvider(this).get(KeranjangViewModel::class.java)
 
-        _binding = FragmentHistoryBinding.inflate(inflater, container, false)
+        _binding = FragmentKeranjangBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textKeranjang

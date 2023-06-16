@@ -4,13 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HistoryViewModel: ViewModel() {
+class KeranjangViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is History Fragment"
+        value = "This is keranjang Fragment"
     }
     val text: LiveData<String> = _text
-
-//    fun buyFood(merchantId: String, customerId: String, foods: List<FoodsItem>) = keranjangRepository.buyFood(merchantId,customerId,foods)
-
 }
