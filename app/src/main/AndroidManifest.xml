@@ -26,22 +26,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StoryApp">
         <activity
-            android:name="com.example.LeftLoversApp.view.detail.DetailActivity"
+            android:name=".view.recommendation.RecommendationActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.LeftLoversApp.view.upload.UploadActivity"
+            android:name=".view.rating.RatingActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.LeftLoversApp.view.welcome.WelcomeActivity"
+            android:name=".view.detail.DetailActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.LeftLoversApp.view.login.LoginActivity"
+            android:name=".view.upload.UploadActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.LeftLoversApp.view.register.RegisterActivity"
+            android:name=".view.welcome.WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.LeftLoversApp.MainActivity"
+            android:name=".view.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.register.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

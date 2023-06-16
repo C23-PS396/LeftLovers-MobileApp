@@ -12,6 +12,7 @@ import com.example.LeftLoversApp.R
 import com.example.LeftLoversApp.local.Story
 import com.example.LeftLoversApp.localData.Food
 import com.example.LeftLoversApp.view.detail.DetailActivity
+
 //import com.example.LeftLoversApp.view.detail.DetailActivity
 import java.text.NumberFormat
 import java.util.Locale

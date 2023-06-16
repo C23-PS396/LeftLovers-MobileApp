@@ -25,6 +25,7 @@ import java.util.Locale
 class ActiveFoodDetailAdapter(private val listStory: List<Food>, private val cartManager: CartManager) :
     RecyclerView.Adapter<ActiveFoodDetailAdapter.ViewHolder>() {
 
+
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
             LayoutInflater.from(viewGroup.context).inflate(R.layout.item_merch, viewGroup, false)
@@ -85,6 +86,9 @@ class ActiveFoodDetailAdapter(private val listStory: List<Food>, private val car
             qtt.text = quantity.toString()
         }
     }
+    fun resetCart() {
+        cartManager.resetCart()
+    }
 }
 
 class CartManager(private val context: Context) {
@@ -114,8 +118,6 @@ class CartManager(private val context: Context) {
             saveCartItems()
         }
     }
-
-
 
     fun getItems(): Map<String, Int> {
         return FoodsItem.toMap()

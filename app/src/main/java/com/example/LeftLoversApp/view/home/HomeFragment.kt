@@ -27,7 +27,11 @@ import com.example.LeftLoversApp.model.UserPreference
 import com.example.LeftLoversApp.view.login.LoginActivity
 import com.example.LeftLoversApp.view.Result
 import com.example.LeftLoversApp.view.adapter.ActiveFoodAdapter
+
+import com.example.LeftLoversApp.view.adapter.CartManager
+
 import com.example.LeftLoversApp.view.search.SearchFragment
+
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")
 
@@ -75,18 +79,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    //    private fun setupView() {
-//        @Suppress("DEPRECATION")
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//            window.insetsController?.hide(WindowInsets.Type.statusBars())
-//        } else {
-//            window.setFlags(
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN
-//            )
-//        }
-//        supportActionBar?.hide()
-//    }
+
     private fun setupGetAction(token: String) {
         homeViewModel.getFoodActive(token).observe(this) {
             when (it) {
@@ -123,78 +116,4 @@ class HomeFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
-
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater.inflate(R.menu.menu_home, menu)
-//        super.onCreateOptionsMenu(menu, inflater)
-//
-//        val searchManager = requireActivity().getSystemService(Context.SEARCH_SERVICE) as SearchManager
-//        val searchView = menu.findItem(R.id.action_search).actionView as SearchView
-//
-//        val componentName = ComponentName(requireContext(), HomeFragment::class.java)
-//
-//        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-//        searchView.queryHint = resources.getString(R.string.search_hint)
-//
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//
-//            override fun onQueryTextSubmit(query: String): Boolean {
-////                mainViewModel.findRestaurant(query)
-//                searchView.clearFocus()
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(query: String): Boolean {
-//                return false
-//            }
-//        })
-//    }
-
-}
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        binding = FragmentHomeBinding.inflate(layoutInflater)
-//        val root: View = binding.root
-//
-//
-//        val layoutManager = LinearLayoutManager(this)
-//        binding.rvStory.layoutManager = layoutManager
-//        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-//        binding.rvStory.addItemDecoration(itemDecoration)
-//
-//        setupView()
-//        setupLogout()
-//    }
-
-//    private var _binding: FragmentHomeBinding? = null
-//
-//    // This property is only valid between onCreateView and
-//    // onDestroyView.
-//    private val binding get() = _binding!!
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        val homeViewModel =
-//            ViewModelProvider(this).get(HomeViewModel::class.java)
-//
-//        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-//        val root: View = binding.root
-//
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-//        return root
-//    }
-//
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
 

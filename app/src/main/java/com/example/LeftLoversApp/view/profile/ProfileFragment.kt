@@ -2,6 +2,7 @@ package com.example.LeftLoversApp.view.profile
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,6 +25,8 @@ import com.example.LeftLoversApp.MainModelFactory
 import com.example.LeftLoversApp.MainViewModel
 import com.example.LeftLoversApp.R
 import com.example.LeftLoversApp.view.leaderboard.LeaderboardFragment
+import com.example.LeftLoversApp.view.login.LoginActivity
+import com.example.LeftLoversApp.view.recommendation.RecommendationActivity
 
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")
@@ -86,6 +89,11 @@ class ProfileFragment : Fragment() {
 
         binding.logoutButton.setOnClickListener {
             mainViewModel.logout()
+        }
+        binding.recommendation.setOnClickListener {
+            val intent = Intent(requireContext(), RecommendationActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
     }
 
