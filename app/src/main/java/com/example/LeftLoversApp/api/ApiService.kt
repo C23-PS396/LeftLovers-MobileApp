@@ -1,6 +1,8 @@
 package com.example.LeftLoversApp.api
 
 
+import com.example.LeftLoversApp.local.RecommendationResponse
+import com.example.LeftLoversApp.local.ReviewResponse
 import com.example.LeftLoversApp.model.*
 import com.example.LeftLoversApp.localData.FoodsItem
 import com.example.LeftLoversApp.localData.StatusResponses
@@ -83,6 +85,15 @@ interface ApiService {
         @Field("transactionId") transactionId: String?
     ): Call<StatusResponses>
 
+    @FormUrlEncoded
+    @POST("/api/v1/review")
+    fun postReview(
+        @Header("Authorization") token: String,
+        @Field("transactionId") transactionId: String?,
+        @Field("rating") rating: Int,
+        @Field("review") review: String
+    ): Call<ReviewResponse>
+
 //    @FormUrlEncoded
 //    @POST("/api/v1/transaction")
 //    fun postTransaction(
@@ -105,6 +116,12 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body requestBody: RequestBody
     ): Call<TransactionResponses>
+
+    @GET("/api/v1/merchant/recommendation")
+    fun getRecommendation(
+        @Header("Authorization") token: String,
+        @Query("customerId") customerId: String,
+    ): Call<RecommendationResponse>
 
 //    @POST("/api/v1/transaction")
 //    suspend fun postTransaction(

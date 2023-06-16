@@ -12,6 +12,8 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.viewModels
+
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,20 +57,7 @@ class confirmPayment : Fragment() {
         super.onResume()
         checkSession()
     }
-//    private fun checkSession() {
-//        confirmPaymentViewModel.checkToken().observe(this) {
-//            if(it == "null") {
-//                val intent = Intent(requireActivity(), LoginActivity::class.java)
-//                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//                startActivity(intent)
-//            }else {
-////                setupGetAction("Bearer $it")
-//                binding.updateStatus.setOnClickListener() {
-//                    confirmPaymentViewModel.updateStatus("Bearer $it", 2, )
-//                }
-//            }
-//        }
-//    }
+
     private fun checkSession() {
         confirmPaymentViewModel.checkToken().observe(this) { token ->
             if (token == "null") {
@@ -88,6 +77,8 @@ class confirmPayment : Fragment() {
 //                            setupPurchase("Bearer $token", merchId, customerId, foodItems)
                             println("ini transaksi id nya besti $transactionId")
                             confirmPaymentViewModel.updateStatus("Bearer $token", 2, transactionId)
+//                            val navController = findNavController()
+//                            navController.navigate(R.id.navigation_history)
 //                            confirmPaymentViewModel.resetTransactionId()
 
                         }
@@ -103,38 +94,4 @@ class confirmPayment : Fragment() {
             }
         }
     }
-
-    //    private fun setupView() {
-//        @Suppress("DEPRECATION")
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//            window.insetsController?.hide(WindowInsets.Type.statusBars())
-//        } else {
-//            window.setFlags(
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN
-//            )
-//        }
-//        supportActionBar?.hide()
-//    }
-//    private fun setupGetAction(token: String) {
-//        confirmPaymentViewModel.getFoodActive(token).observe(this) {
-//            when (it) {
-//                is Result.Loading -> {
-//                    binding.progressBar.visibility = View.VISIBLE
-//                }
-//                is Result.Error -> {
-//                    binding.progressBar.visibility = View.INVISIBLE
-//                    val error = it.error
-//                    Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
-//
-//                }
-//                is Result.Success -> {
-//                    binding.progressBar.visibility = View.INVISIBLE
-//                    val temp = it.data
-//                    val rvAdapter = ActiveFoodAdapter(temp)
-//                    binding.rvStory.adapter = rvAdapter
-//                }
-//            }
-//        }
-//    }
 }

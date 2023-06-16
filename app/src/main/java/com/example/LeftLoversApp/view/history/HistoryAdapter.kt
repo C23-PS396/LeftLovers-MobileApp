@@ -1,7 +1,9 @@
 package com.example.LeftLoversApp.view.history
 
+
 import android.content.Context
 import android.graphics.Color
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +12,14 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.LeftLoversApp.R
 import com.example.LeftLoversApp.model.HistoryItem
+
+import com.example.LeftLoversApp.view.detail.DetailActivity
+import com.example.LeftLoversApp.view.rating.RatingActivity
+import com.example.LeftLoversApp.view.review.ReviewFragment
+
 import java.text.NumberFormat
 import java.util.*
+
 
 class HistoryAdapter(private val context: Context,
                      private var listHistory: List<HistoryItem>) :
@@ -26,9 +34,18 @@ class HistoryAdapter(private val context: Context,
         val currentItem = listHistory[position]
         holder.bind(currentItem)
 
+        holder.itemView.setOnClickListener{
+            val intent = Intent(holder.itemView.context, RatingActivity::class.java)
+            intent.putExtra("id", listHistory[holder.adapterPosition].id)
+            intent.putExtra("status", listHistory[holder.adapterPosition].status)
+            holder.itemView.context.startActivity(intent)
+        }
+
+
         val currencyFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID")) // Membuat instance NumberFormat dengan locale Indonesia
         currencyFormat.maximumFractionDigits = 0// Mengatur jumlah digit desimal menjadi 0
         val formattedPrice = currencyFormat.format(currentItem.totalprice) // Memformat nilai price menjadi format mata uang Rupiah
+
 
     }
 
