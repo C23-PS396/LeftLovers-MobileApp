@@ -2,6 +2,7 @@ package com.example.LeftLoversApp.view.history
 
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 
 import android.view.LayoutInflater
@@ -61,7 +62,7 @@ class HistoryAdapter(private val context: Context,
         return when (status) {
             1 -> "Pending"
             2 -> "Checking Payment"
-            3 -> "Payment Accrpy"
+            3 -> "Payment Accept"
             4 -> "Accept"
             5 -> "Done"
             else -> "Fail"
@@ -70,8 +71,8 @@ class HistoryAdapter(private val context: Context,
 
     fun getStatusColor(status: Int): Int {
         return when (status) {
-            1 -> ContextCompat.getColor(context, R.color.pending)
-            2 -> ContextCompat.getColor(context, R.color.pending)
+            1 -> ContextCompat.getColor(context, R.color.pending2)
+            2 -> ContextCompat.getColor(context, R.color.pending2)
             3 -> ContextCompat.getColor(context, R.color.pending)
             4 -> ContextCompat.getColor(context, R.color.pending)
             5 -> ContextCompat.getColor(context, R.color.done)

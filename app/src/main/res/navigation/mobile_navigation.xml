@@ -26,14 +26,14 @@
         tools:layout="@layout/fragment_leaderboard" />
 
     <fragment
-
-        android:id="@+id/navigation_confirmPayment"
-        android:name="com.example.LeftLoversApp.view.confirmPayment.confirmPayment"
-        android:label="@string/Leaderboard"
-        tools:layout="@layout/fragment_confirm_payment" />
-
         android:id="@+id/navigation_search"
         android:name="com.example.LeftLoversApp.view.search.SearchFragment"
         tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/navigation_payment"
+        android:name="com.example.LeftLoversApp.view.confirmPayment.confirmPayment"
+        tools:layout="@layout/fragment_confirm_payment" />
+
 
 </navigation>

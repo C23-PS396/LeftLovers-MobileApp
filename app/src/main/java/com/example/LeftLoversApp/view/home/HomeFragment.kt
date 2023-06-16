@@ -18,6 +18,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.LeftLoversApp.MainViewModel
@@ -29,6 +30,7 @@ import com.example.LeftLoversApp.view.Result
 import com.example.LeftLoversApp.view.adapter.ActiveFoodAdapter
 
 import com.example.LeftLoversApp.view.adapter.CartManager
+import com.example.LeftLoversApp.view.recommendation.RecommendationActivity
 
 import com.example.LeftLoversApp.view.search.SearchFragment
 
@@ -58,6 +60,8 @@ class HomeFragment : Fragment() {
         val itemDecoration = DividerItemDecoration(requireActivity(), layoutManager.orientation)
         binding.rvStory.addItemDecoration(itemDecoration)
         setHasOptionsMenu(true)
+
+        setButton()
 
         return binding.root
     }
@@ -102,6 +106,15 @@ class HomeFragment : Fragment() {
         }
     }
 
+    fun setButton() {
+        binding.recommendation.setOnClickListener {
+            val intent = Intent(requireContext(), RecommendationActivity::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_home, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -116,4 +129,5 @@ class HomeFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
+}
 

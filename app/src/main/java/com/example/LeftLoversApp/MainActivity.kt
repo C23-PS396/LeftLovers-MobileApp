@@ -3,6 +3,8 @@ package com.example.LeftLoversApp
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +15,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -51,8 +54,6 @@ class MainActivity : AppCompatActivity() {
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvStory.addItemDecoration(itemDecoration)
 
-        supportActionBar?.setLogo(R.drawable.logo)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
 
         setupView()
         setupBottomNavBar()
@@ -88,6 +89,11 @@ class MainActivity : AppCompatActivity() {
             )
         }
 //        supportActionBar?.hide()
+        val actionBar = supportActionBar
+        actionBar?.setBackgroundDrawable(ContextCompat.getDrawable(this, R.color.appBarColor))
+        actionBar?.setLogo(R.drawable.logo)
+        actionBar?.setDisplayUseLogoEnabled(true)
+
     }
 
     private fun setupBottomNavBar() {
@@ -100,12 +106,13 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
 
-                R.id.navigation_home, R.id.navigation_history , R.id.navigation_profile, R.id.navigation_leaderboard, R.id.navigation_confirmPayment
-
+                R.id.navigation_home, R.id.navigation_history , R.id.navigation_profile,
+                R.id.navigation_leaderboard, R.id.navigation_search, R.id.navigation_payment,
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
 //        ----------------------------------
     }
 

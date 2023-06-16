@@ -12,6 +12,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.viewModels
+
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -72,19 +73,25 @@ class confirmPayment : Fragment() {
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                     } else {
-                        binding.updateStatus.setOnClickListener( {
+                        binding.updateStatus.setOnClickListener {
 //                            setupPurchase("Bearer $token", merchId, customerId, foodItems)
                             println("ini transaksi id nya besti $transactionId")
                             confirmPaymentViewModel.updateStatus("Bearer $token", 2, transactionId)
 //                            val navController = findNavController()
 //                            navController.navigate(R.id.navigation_history)
 //                            confirmPaymentViewModel.resetTransactionId()
-                        })
+
+                        }
+
+                        binding.updateStatus.setOnClickListener {
+//                            findNavController().navigate(R.id.navigation_home)
+                        }
+
+
 
                     }
                 }
             }
         }
     }
-
 }

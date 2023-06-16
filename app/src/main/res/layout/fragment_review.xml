@@ -9,7 +9,8 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
 
         <TextView
@@ -17,12 +18,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Masukkan teks:"
+            android:layout_marginBottom="10dp"
             android:textSize="16sp" />
 
         <EditText
             android:id="@+id/editTextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:inputType="text" />
 
         <TextView
@@ -30,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Beri peringkat:"
+            android:layout_marginBottom="10dp"
             android:textSize="16sp" />
 
         <RatingBar
@@ -37,11 +41,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
-            android:stepSize="1" />
+            android:stepSize="1"
+            android:layout_marginBottom="20dp"
+            />
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/appBarColor"
+            android:layout_marginBottom="20dp"
             android:text="Submit" />
         <ProgressBar
             android:id="@+id/progressBar"
