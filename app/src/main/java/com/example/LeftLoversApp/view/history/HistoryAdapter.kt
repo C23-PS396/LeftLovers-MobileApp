@@ -2,6 +2,7 @@ package com.example.LeftLoversApp.view.history
 
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 
 import android.view.LayoutInflater
