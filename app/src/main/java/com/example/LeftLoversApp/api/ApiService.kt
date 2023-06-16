@@ -1,5 +1,8 @@
 package com.example.LeftLoversApp.api
 
+<<<<<<< HEAD
+import com.example.LeftLoversApp.model.*
+=======
 import com.example.LeftLoversApp.localData.FoodsItem
 import com.example.LeftLoversApp.localData.StatusResponses
 import com.example.LeftLoversApp.localData.TransactionResponse
@@ -10,6 +13,7 @@ import com.example.LeftLoversApp.model.LoginResponse
 import com.example.LeftLoversApp.model.RegisterResponse
 import com.example.LeftLoversApp.model.StoryResponse
 import com.google.gson.annotations.SerializedName
+>>>>>>> 0fd771ca8df55ad34ffc14c006b91c44077c3cfb
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -33,6 +37,11 @@ interface ApiService {
         @Field("password") password: String
     ): Call<LoginResponse>
 
+<<<<<<< HEAD
+    @GET("/api/v1/gamification")
+    fun getGamification(
+    ): Call<List<GamificationResponseItem>>
+=======
     @GET("/api/v1/food")
     fun getFood(
         @Header("Authorization") token: String,
@@ -95,6 +104,7 @@ interface ApiService {
 //        @SerializedName("quantity") val quantity: Int
 //    )
 
+>>>>>>> 0fd771ca8df55ad34ffc14c006b91c44077c3cfb
 
     @GET("stories")
     fun getStories(
