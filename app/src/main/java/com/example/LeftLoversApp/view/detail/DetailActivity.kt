@@ -46,6 +46,14 @@ class DetailActivity : AppCompatActivity() {
         const val MERCHANTID = "merchantId"
         const val IMG = "img"
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        cartManager.resetCart()
+    }
+    override fun onPause() {
+        super.onPause()
+        cartManager.resetCart()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +69,8 @@ class DetailActivity : AppCompatActivity() {
         binding.rvStory.layoutManager = layoutManager
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvStory.addItemDecoration(itemDecoration)
+
+
 
         checkSession()
     }

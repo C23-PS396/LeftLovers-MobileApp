@@ -8,6 +8,8 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.LeftLoversApp.api.ApiService
 import com.example.LeftLoversApp.local.MainExecutor
+import com.example.LeftLoversApp.local.RecommendationResponse
+import com.example.LeftLoversApp.local.ReviewResponse
 import com.example.LeftLoversApp.localData.DaoFood
 import com.example.LeftLoversApp.localData.DataStatus
 import com.example.LeftLoversApp.localData.Food
@@ -35,24 +37,21 @@ class FoodRepository private constructor(private val apiService: ApiService, pri
     private val resultKeranjang = MediatorLiveData<Result<TransactionResponses>>()
     private val resultEditStatus = MutableLiveData<Result<StatusResponses>>()
     private val resultUpdateStatus = MutableLiveData<Result<StatusResponses>>()
+    private val resultReview = MutableLiveData<Result<ReviewResponse>>()
 
     fun getAllFood(token: String):LiveData<Result<List<Food>>> {
         val merchantId = ""
         val category = ""
-        val isActive = false
+        val isActive = true
         getFoodResult.value = Result.Loading
         val client = apiService.getFood(token, merchantId, category, isActive)
         client.enqueue(object : Callback<FoodResponses> {
             override fun onResponse(call: Call<FoodResponses>, response: Response<FoodResponses>) {
                 val responseBody = response.body()?.data
                 val responseBodyList = ArrayList<Food>()
-                println("masuk kah manies")
                 if (response.isSuccessful) {
-                    println("masuk 1")
                     mainExecutor.diskIO.execute {
-                        println("masuk 2")
                         responseBody?.forEach {
-                            println("masuk 3")
                             val temp = Food(
                                 it.id,
                                 it.createdAt,
@@ -65,12 +64,9 @@ class FoodRepository private constructor(private val apiService: ApiService, pri
                                 it.activeFood ?: ActiveFood("", 0, "", "", "", "", 0, false, "")
                             )
                             responseBodyList.add(temp)
-                            println("masuk 4")
                         }
                         daoFood.deleteFood()
-                        println("masuk 5")
                         daoFood.postFood(responseBodyList)
-                        println("masuk 6")
                     }
 
                 }else {
@@ -137,29 +133,7 @@ class FoodRepository private constructor(private val apiService: ApiService, pri
         }
         return getFoodMerchResult
     }
-//    fun buyFood(token: String, merchantId: String?, customerId: String, foods: List<FoodsItem>): LiveData<Result<TransactionResponse>> {
-//        resultKeranjang.value = Result.Loading
-//        val client = apiService.postTransaction(token, merchantId, customerId, foods)
-//        client.enqueue(object : Callback<TransactionResponse> {
-//            override fun onResponse(
-//                call: Call<TransactionResponse>,
-//                response: Response<TransactionResponse>
-//            ) {
-//                val responseBody = response.body()
-//                if (response.isSuccessful && responseBody != null) {
-//                    resultKeranjang.value = Result.Success(responseBody)
-//                } else {
-//                    resultKeranjang.value = Result.Error(REGISTER_ERROR_MESSAGE)
-//                    Log.e(FoodRepository.TAG, "Failed: Response Unsuccessful - ${response.message()}")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<TransactionResponse>, t: Throwable) {
-//                resultKeranjang.value = Result.Error(LOGIN_ERROR_MESSAGE)
-//                Log.e(FoodRepository.TAG, "Failed: OnFailure Response - ${t.message.toString()}")            }
-//        })
-//        return resultKeranjang
-//    }
+
     fun buyFood(token: String, merchantId: String?, customerId: String, foods: List<FoodsItem>): LiveData<Result<TransactionResponses>> {
         resultKeranjang.value = Result.Loading
 
@@ -183,7 +157,7 @@ class FoodRepository private constructor(private val apiService: ApiService, pri
                 if (response.isSuccessful && responseBody != null) {
                     resultKeranjang.value = Result.Success(responseBody)
                 } else {
-                    resultKeranjang.value = Result.Error(REGISTER_ERROR_MESSAGE)
+                    resultKeranjang.value = Result.Error(OUT_OF_STOCK)
                     Log.e(FoodRepository.TAG, "Failed: Response Unsuccessful - ${response.message()}")
                 }
             }
@@ -196,34 +170,7 @@ class FoodRepository private constructor(private val apiService: ApiService, pri
 
         return resultKeranjang
     }
-    fun editStatus(token: String, status: Int, transactionId: String): LiveData<Result<StatusResponses>> {
-        resultEditStatus.value = Result.Loading
-        val gson = Gson()
-        val dataStatus = DataStatus(status, transactionId)
-        val requestBody = gson.toJson(dataStatus)
-            .toRequestBody("application/json".toMediaType())
 
-        val client = apiService.updateStatus(token, requestBody)
-
-        client.enqueue(object : Callback<StatusResponses> {
-            override fun onResponse(call: Call<StatusResponses>, response: Response<StatusResponses>) {
-                val responseBody = response.body()
-                if (response.isSuccessful && responseBody != null) {
-                    resultEditStatus.value = Result.Success(responseBody)
-                } else {
-                    resultEditStatus.value = Result.Error(EDIT_STATUS_ERROR_MESSAGE)
-                    Log.e(TAG, "Failed: Response Unsuccessful - ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<StatusResponses>, t: Throwable) {
-                resultEditStatus.value = Result.Error(EDIT_STATUS_ERROR_MESSAGE)
-                Log.e(TAG, "Failed: OnFailure Response - ${t.message.toString()}")
-            }
-        })
-
-        return resultEditStatus
-    }
     fun updateStatus(token: String, status: Int, transactionId: String): LiveData<Result<StatusResponses>> {
         resultUpdateStatus.value = Result.Loading
 //        val gson = Gson()
@@ -252,6 +199,38 @@ class FoodRepository private constructor(private val apiService: ApiService, pri
 
         return resultUpdateStatus
     }
+    fun postReview(token: String, transactionId: String?, rating: Int, review: String): LiveData<Result<ReviewResponse>> {
+
+        val call = apiService.postReview(token, transactionId, rating, review)
+
+        call.enqueue(object : Callback<ReviewResponse> {
+            override fun onResponse(call: Call<ReviewResponse>, response: Response<ReviewResponse>) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        resultReview.value = Result.Success(responseBody)
+                    } else {
+                        resultReview.value = Result.Error("Response body is null")
+                        val errorCode = response.code()
+                        val errorMessage = response.message()
+                        Log.e(TAG, "API call failed with error code $errorCode: $errorMessage")
+                    }
+                } else {
+                    resultReview.value = Result.Error("Response unsuccessful")
+                    val errorCode = response.code()
+                    val errorMessage = response.message()
+                    Log.e(TAG, "API call failed with error code $errorCode: $errorMessage")
+                }
+            }
+
+            override fun onFailure(call: Call<ReviewResponse>, t: Throwable) {
+                resultReview.value = Result.Error(t.message ?: "Unknown error")
+            }
+        })
+
+        return resultReview
+    }
+
 
 
     companion object {
@@ -259,6 +238,8 @@ class FoodRepository private constructor(private val apiService: ApiService, pri
         private const val LOGIN_ERROR_MESSAGE = "Login failed, please try again."
         private const val REGISTER_ERROR_MESSAGE = "Register failed, please try again."
         private const val EDIT_STATUS_ERROR_MESSAGE = "Gagal mengupdate status"
+        private const val OUT_OF_STOCK = "Maaf pesanan anda melebihi jumlah stok makanan yang ada"
+        private const val REVIEW_STATUS_ERROR_MESSAGE = "Gagal memberikan review"
         @Volatile
         private var instance: FoodRepository? = null
         fun getInstance(

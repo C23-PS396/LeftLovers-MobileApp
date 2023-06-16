@@ -100,7 +100,6 @@ class LoginActivity : AppCompatActivity() {
 
 //                            loginViewModel.saveUserId(temp.data.id)
                             println(temp.data.id)
-                            println("keluar 6")
 
                             loginViewModel.saveUsername(temp.data.username)
                             loginViewModel.saveId(temp.data.id)

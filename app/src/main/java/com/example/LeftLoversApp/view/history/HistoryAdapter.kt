@@ -1,5 +1,6 @@
 package com.example.LeftLoversApp.view.history
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.LeftLoversApp.R
 import com.example.LeftLoversApp.model.HistoryItem
+import com.example.LeftLoversApp.view.detail.DetailActivity
+import com.example.LeftLoversApp.view.rating.RatingActivity
+import com.example.LeftLoversApp.view.review.ReviewFragment
 
 class HistoryAdapter(private var listHistory: List<HistoryItem>) :
     RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
@@ -19,6 +23,12 @@ class HistoryAdapter(private var listHistory: List<HistoryItem>) :
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         val currentItem = listHistory[position]
         holder.bind(currentItem)
+        holder.itemView.setOnClickListener{
+            val intent = Intent(holder.itemView.context, RatingActivity::class.java)
+            intent.putExtra("id", listHistory[holder.adapterPosition].id)
+            intent.putExtra("status", listHistory[holder.adapterPosition].status)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     fun setHistoryItems(historyItems: List<HistoryItem>) {
