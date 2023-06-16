@@ -15,4 +15,7 @@
     <color name="red_200">#F06292</color>
     <color name="red_700">#AD1457</color>
     <color name="navi">#2D3D4F</color>
+    <color name="done">#9AE6B4</color>
+    <color name="pending">#81E6D9</color>
+    <color name="failed">#FEB2B2</color>
 </resources>

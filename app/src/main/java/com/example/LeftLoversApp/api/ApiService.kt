@@ -48,6 +48,21 @@ interface ApiService {
         @Query("customerId") customerId: String
     ): Call<HistoryResponse>
 
+    @GET("/api/v1/search")
+    fun getSearch(
+        @Header("Authorization") token: String,
+        @Query("query") query: String?
+    ): Call<SearchResponse>
+
+//    @GET("/api/v1/merchant")
+//    fun getMerchant(
+//        @Header("Authorization") token: String,
+//        @Query("merchantId") merchantId: String,
+//        @Query("sellerId") sellerId: String?,
+//        @Query("isActive") isActive: Boolean?,
+//        @Query("category") category: String?
+//    ): Call<MerchantResponse>
+
     @GET("/api/v1/food")
     fun getFood(
         @Header("Authorization") token: String,
