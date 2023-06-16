@@ -12,6 +12,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.LeftLoversApp.R
@@ -83,18 +84,26 @@ class confirmPayment : Fragment() {
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                     } else {
-                        binding.updateStatus.setOnClickListener( {
+                        binding.updateStatus.setOnClickListener {
 //                            setupPurchase("Bearer $token", merchId, customerId, foodItems)
                             println("ini transaksi id nya besti $transactionId")
                             confirmPaymentViewModel.updateStatus("Bearer $token", 2, transactionId)
 //                            confirmPaymentViewModel.resetTransactionId()
-                        })
+
+                        }
+
+                        binding.updateStatus.setOnClickListener {
+//                            findNavController().navigate(R.id.navigation_home)
+                        }
+
+
 
                     }
                 }
             }
         }
     }
+
     //    private fun setupView() {
 //        @Suppress("DEPRECATION")
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
