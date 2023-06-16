@@ -71,8 +71,8 @@ class HistoryAdapter(private val context: Context,
 
     fun getStatusColor(status: Int): Int {
         return when (status) {
-            1 -> ContextCompat.getColor(context, R.color.pending)
-            2 -> ContextCompat.getColor(context, R.color.pending)
+            1 -> ContextCompat.getColor(context, R.color.pending2)
+            2 -> ContextCompat.getColor(context, R.color.pending2)
             3 -> ContextCompat.getColor(context, R.color.pending)
             4 -> ContextCompat.getColor(context, R.color.pending)
             5 -> ContextCompat.getColor(context, R.color.done)

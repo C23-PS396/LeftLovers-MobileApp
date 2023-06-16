@@ -90,11 +90,6 @@ class ProfileFragment : Fragment() {
         binding.logoutButton.setOnClickListener {
             mainViewModel.logout()
         }
-        binding.recommendation.setOnClickListener {
-            val intent = Intent(requireContext(), RecommendationActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-        }
     }
 
 

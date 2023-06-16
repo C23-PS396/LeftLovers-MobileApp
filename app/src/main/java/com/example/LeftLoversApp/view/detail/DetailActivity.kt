@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -70,7 +71,10 @@ class DetailActivity : AppCompatActivity() {
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvStory.addItemDecoration(itemDecoration)
 
-
+        val actionBar = supportActionBar
+        actionBar?.setBackgroundDrawable(ContextCompat.getDrawable(this, R.color.appBarColor))
+        actionBar?.setLogo(R.drawable.logo)
+        actionBar?.setDisplayUseLogoEnabled(true)
 
         checkSession()
     }
