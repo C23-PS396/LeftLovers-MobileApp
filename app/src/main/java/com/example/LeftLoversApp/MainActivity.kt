@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
 
                 R.id.navigation_home, R.id.navigation_history , R.id.navigation_profile,
-                R.id.navigation_leaderboard, R.id.navigation_search, R.id.navigation_payment
+                R.id.navigation_leaderboard, R.id.navigation_search, R.id.navigation_payment,
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

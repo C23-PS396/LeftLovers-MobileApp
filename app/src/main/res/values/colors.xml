@@ -18,5 +18,6 @@
     <color name="done">#9AE6B4</color>
     <color name="pending">#81E6D9</color>
     <color name="failed">#FEB2B2</color>
+    <color name="pending2">#EDA720</color>
     <color name="appBarColor">#5A9BD8</color>
 </resources>
