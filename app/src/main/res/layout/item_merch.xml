@@ -62,42 +62,59 @@
             android:layout_marginTop="8dp"
             android:gravity="start"
             android:textSize="14sp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="@+id/tv_item_desc"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_desc"
             tools:text="@string/cekresponse" />
 
-
-        <LinearLayout
-            android:id="@+id/counter_layout"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="end"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_item_desc"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.60" />
+
+        <Button
+            android:id="@+id/btn_minus"
+            android:layout_width="41dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="120dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal"
+            app:layout_constraintStart_toEndOf="@+id/img_story"
+            app:layout_constraintTop_toTopOf="@+id/guideline_horizontal2"
+            tools:text="@string/minus" />
+
+        <TextView
+            android:id="@+id/tv_counter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+            app:layout_constraintStart_toEndOf="@+id/btn_minus"
+            app:layout_constraintTop_toTopOf="@+id/guideline_horizontal2"
+
+            tools:text="0" />
+
+        <Button
+            android:id="@+id/btn_plus"
+            android:layout_width="41dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_item_desc">
+            app:layout_constraintTop_toTopOf="@+id/guideline_horizontal2"
+            tools:text="@string/plus" />
 
-            <Button
-                android:id="@+id/btn_minus"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:text="-" />
 
-            <TextView
-                android:id="@+id/tv_counter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:text="0" />
-
-            <Button
-                android:id="@+id/btn_plus"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:text="+" />
-        </LinearLayout>
 
 
 

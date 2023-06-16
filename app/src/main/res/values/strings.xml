@@ -46,6 +46,7 @@
     <string name="harga">harga</string>
     <string name="status">status</string>
     <string name="search">search</string>
+    <string name="bayarAdmin">Silakan Transfer ke No. Rek 123456789 atas nama Admin Makmur</string>
 
 
 </resources>

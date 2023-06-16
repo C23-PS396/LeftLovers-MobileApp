@@ -61,7 +61,7 @@ class HistoryAdapter(private val context: Context,
         return when (status) {
             1 -> "Pending"
             2 -> "Checking Payment"
-            3 -> "Payment Accrpy"
+            3 -> "Payment Accept"
             4 -> "Accept"
             5 -> "Done"
             else -> "Fail"
